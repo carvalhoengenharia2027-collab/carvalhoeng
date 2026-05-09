@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-barlow: 'Barlow', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-barlow);
+  background-color: #f8f7f4;
+  color: #1a1a1a;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#1a3a6b] text-white px-6 py-3 font-semibold tracking-wide uppercase text-sm hover:bg-[#122855] transition-all duration-300;
+  }
+  .btn-whatsapp {
+    @apply bg-[#25D366] text-white px-6 py-3 font-semibold tracking-wide uppercase text-sm hover:bg-[#1da851] transition-all duration-300 flex items-center gap-2;
+  }
+  .section-tag {
+    @apply text-[#b8860b] text-xs font-bold uppercase tracking-[0.25em] mb-3;
+  }
+  .section-title {
+    @apply font-display text-3xl md:text-4xl text-[#0e1f42] leading-tight;
+  }
+}
