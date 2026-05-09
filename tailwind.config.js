@@ -8,24 +8,35 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-barlow)', 'sans-serif'],
-        display: ['var(--font-playfair)', 'serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
+        background: '#FAF9F6',
+        foreground: '#1C1917',
         primary: {
-          50: '#f0f4ff',
-          100: '#dbe4ff',
-          500: '#1a3a6b',
-          600: '#163260',
-          700: '#122855',
-          800: '#0e1f42',
-          900: '#091530',
+          DEFAULT: '#C2510F',
+          foreground: '#FFFFFF',
         },
-        gold: {
-          400: '#d4a017',
-          500: '#b8860b',
-          600: '#9a7209',
+        secondary: {
+          DEFAULT: '#78716C',
+          foreground: '#FFFFFF',
         },
+        muted: {
+          DEFAULT: '#F5F5F4',
+          foreground: '#78716C',
+        },
+        accent: {
+          DEFAULT: '#C2510F',
+          foreground: '#FFFFFF',
+        },
+        card: {
+          DEFAULT: '#FFFFFF',
+          foreground: '#1C1917',
+        },
+        border: '#E7E5E4',
+      },
+      borderRadius: {
+        xl: '0.75rem',
       },
     },
   },
