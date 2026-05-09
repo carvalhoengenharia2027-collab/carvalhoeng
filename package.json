@@ -26,5 +26,10 @@
     "postcss": "^8",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@formspree/react": {
+      "react": "^19.0.0"
+    }
   }
 }
