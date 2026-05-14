@@ -3,35 +3,51 @@
 @tailwind utilities;
 
 :root {
-  --background: #080808;
-  --foreground: #fafafa;
-  --primary: #1E3FD8;
+  --blue: #1E3FD8;
+  --blue-light: #3d5ce8;
+  --bg: #080808;
+  --bg-dark: #050505;
+  --surface: #0d0d0d;
   --border: #1a1a1a;
-  --ring: #1E3FD8;
-  --radius: 0.5rem;
+  --text: #fafafa;
+  --muted: #888888;
+  --dim: #666666;
 }
 
-@layer base {
-  * {
-    border-color: var(--border);
-  }
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+body {
+  background: var(--bg-dark);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+
+/* Selection */
+::selection {
+  background: rgba(30, 63, 216, 0.3);
+  color: #fafafa;
 }

@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Syne } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const syne = Syne({ subsets: ["latin"], variable: "--font-syne" })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://carvalho-engenharia.com"),
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "alvará de construção Goiânia",
     "habite-se Goiânia",
     "regularização de obras Goiânia",
+    "regularização de imóvel Goiânia",
     "projeto arquitetônico Goiânia",
     "regularização imobiliária",
     "CREA Goiânia",
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
     "Carvalho Engenharia",
     "averbação de construção",
     "INSS obras Goiânia",
+    "alvará de funcionamento Goiânia",
+    "perícia técnica imóvel",
   ],
   authors: [{ name: "Caio Maracaípe", url: "https://carvalho-engenharia.com" }],
   creator: "Carvalho Engenharia",
@@ -76,8 +79,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={inter.className}>
+    <html lang="pt-BR" className={syne.variable}>
+      <body className={`${syne.className} antialiased`}>
         {children}
       </body>
     </html>
