@@ -31,11 +31,11 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-8 h-9 text-xs text-[#666666]">
             <a
-              href="tel:+5562980621690"
+              href="tel:+5562998062169"
               className="flex items-center gap-1.5 hover:text-[#1E3FD8] transition-colors"
             >
               <Phone size={12} />
-              (62) 9 8062-1690
+              (62) 9 9806-2169
             </a>
             <span className="text-[#2a2a2a]">|</span>
             <a
@@ -116,8 +116,8 @@ export function Navbar() {
             <div className="lg:hidden py-4 border-t border-[#222222]">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2 pb-3 border-b border-[#1a1a1a] text-xs text-[#666666]">
-                  <a href="tel:+5562980621690" className="flex items-center gap-2 hover:text-[#1E3FD8] transition-colors">
-                    <Phone size={12} /> (62) 9 8062-1690
+                  <a href="tel:+5562998062169" className="flex items-center gap-2 hover:text-[#1E3FD8] transition-colors">
+                    <Phone size={12} /> (62) 9 9806-2169
                   </a>
                   <a href="mailto:carvalhoeng@outlook.com.br" className="flex items-center gap-2 hover:text-[#1E3FD8] transition-colors">
                     <Mail size={12} /> carvalhoeng@outlook.com.br

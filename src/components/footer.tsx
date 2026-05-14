@@ -48,7 +48,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-block mt-3 text-sm text-[#1E3FD8] hover:text-[#3d5ce8] transition-colors"
             >
-              📲 (62) 9 8062-1690
+              📲 (62) 9 9806-2169
             </a>
           </div>
 
