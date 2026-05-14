@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import { Target, Eye, Heart, Star, Award, ShieldCheck } from "lucide-react"
 
 const pillars = [
@@ -36,13 +37,57 @@ const pillars = [
 ]
 
 const stats = [
-  { value: "10+", label: "anos de experiência" },
-  { value: "100+", label: "imóveis regularizados" },
-  { value: "CREA", label: "1017786453D-GO" },
-  { value: "2", label: "cidades atendidas" },
+  { value: 10, suffix: "+", label: "anos de experiência" },
+  { value: 200, suffix: "+", label: "imóveis regularizados" },
+  { value: 2, suffix: "", label: "cidades atendidas" },
+  { value: 100, suffix: "%", label: "clientes satisfeitos" },
 ]
 
+function useCountUp(target: number, duration = 1500, start = false) {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (!start) return
+    let startTime: number | null = null
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      setCount(Math.floor(progress * target))
+      if (progress < 1) requestAnimationFrame(step)
+      else setCount(target)
+    }
+    requestAnimationFrame(step)
+  }, [target, duration, start])
+  return count
+}
+
+function StatCard({ stat, animate }: { stat: typeof stats[0]; animate: boolean }) {
+  const count = useCountUp(stat.value, 1200, animate)
+  return (
+    <div
+      className="border border-[#1a1a1a] rounded-xl p-6 text-center hover:border-[#1E3FD8]/30 transition-colors"
+      style={{ backgroundColor: "rgba(30,63,216,0.03)" }}
+    >
+      <p className="text-3xl font-bold text-[#1E3FD8] mb-1 tabular-nums">
+        {count}{stat.suffix}
+      </p>
+      <p className="text-[#888888] text-sm">{stat.label}</p>
+    </div>
+  )
+}
+
 export function Empresa() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [animate, setAnimate] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setAnimate(true) },
+      { threshold: 0.3 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section id="empresa" className="py-24 bg-[#080808] border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,21 +101,14 @@ export function Empresa() {
           </h2>
           <p className="text-[#888888] max-w-2xl mx-auto leading-relaxed">
             Engenharia focada em aprovações, regularizações e projetos residenciais e comerciais.
-            Atendemos Goiânia, Aparecida de Goiânia e interior de Goiás.
+            Atendemos Goiânia, Aparecida de Goiânia e interior de Goiás com responsabilidade técnica registrada no CREA.
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+        {/* Stats com contador animado */}
+        <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="border border-[#1a1a1a] rounded-xl p-6 text-center hover:border-[#1E3FD8]/30 transition-colors"
-              style={{ backgroundColor: "rgba(30,63,216,0.03)" }}
-            >
-              <p className="text-3xl font-bold text-[#1E3FD8] mb-1">{stat.value}</p>
-              <p className="text-[#888888] text-sm">{stat.label}</p>
-            </div>
+            <StatCard key={stat.label} stat={stat} animate={animate} />
           ))}
         </div>
 
@@ -95,6 +133,17 @@ export function Empresa() {
           ))}
         </div>
 
+        {/* CREA badge */}
+        <div className="mt-12 flex justify-center">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-[#1E3FD8]/20 bg-[#1E3FD8]/5">
+            <div className="w-2 h-2 rounded-full bg-[#1E3FD8] animate-pulse" />
+            <span className="text-sm text-[#888888]">
+              Responsável Técnico: <strong className="text-[#fafafa]">Engº Civil Caio Maracaípe</strong>
+              {" — "}
+              <span className="text-[#1E3FD8] font-mono text-xs">CREA 1017786453D-GO</span>
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   )

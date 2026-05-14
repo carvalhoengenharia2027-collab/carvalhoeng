@@ -20,6 +20,7 @@ export function Navbar() {
     { href: "#beneficios", label: "Benefícios" },
     { href: "#quem-precisa", label: "Quem Precisa" },
     { href: "#depoimentos", label: "Depoimentos" },
+    { href: "#faq", label: "FAQ" },
     { href: "#contato", label: "Contato" },
   ]
 
@@ -76,7 +77,7 @@ export function Navbar() {
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}

@@ -8,6 +8,7 @@ const quickLinks = [
   { href: "#beneficios", label: "Benefícios" },
   { href: "#quem-precisa", label: "Quem Precisa" },
   { href: "#depoimentos", label: "Depoimentos" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
 ]
 
