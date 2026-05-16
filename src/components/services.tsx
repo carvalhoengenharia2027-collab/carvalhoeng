@@ -62,60 +62,49 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative p-8 rounded-2xl border transition-all duration-500"
+              className="group relative p-6 rounded-2xl transition-all duration-300"
               style={{
                 backgroundColor: "#0d0d0d",
-                borderColor: "#1a1a1a",
+                border: "1px solid rgba(30,63,216,0.25)",
               }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(30,63,216,0.5)"
+                (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(30,63,216,0.7)"
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "#1a1a1a"
+                (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(30,63,216,0.25)"
               }}
             >
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ backgroundColor: "rgba(30,63,216,0.04)" }} />
-
-              <div className="relative z-10">
-                {/* Ícone em caixa azul — estilo Nexus */}
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500"
-                  style={{
-                    backgroundColor: "rgba(30,63,216,0.15)",
-                    border: "1px solid rgba(30,63,216,0.4)",
-                  }}
-                >
-                  <service.icon className="w-6 h-6" style={{ color: "#1E3FD8" }} />
-                </div>
-
-                <h3
-                  className="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#1E3FD8]"
-                  style={{ color: "#fafafa" }}
-                >
-                  {service.title}
-                </h3>
-
-                <p
-                  className="text-sm leading-relaxed mb-6 transition-colors duration-300 group-hover:text-[#aaaaaa]"
-                  style={{ color: "#888888" }}
-                >
-                  {service.description}
-                </p>
-
-                <a
-                  href={`https://wa.me/5562998062169?text=Olá!%20Gostaria%20de%20informações%20sobre%20${encodeURIComponent(service.title)}.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
-                  style={{ color: "#1E3FD8" }}
-                >
-                  Solicitar orçamento
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
+              {/* Ícone estilo Nexus: fundo escuro simples, sem preenchimento azul */}
+              <div
+                className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
+                style={{
+                  backgroundColor: "#111111",
+                  border: "1px solid #222222",
+                }}
+              >
+                <service.icon className="w-5 h-5 text-[#1E3FD8]" />
               </div>
+
+              {/* Título em azul — igual Nexus */}
+              <h3 className="text-lg font-bold text-[#1E3FD8] mb-3 leading-snug">
+                {service.title}
+              </h3>
+
+              <p className="text-sm leading-relaxed text-[#888888] mb-6">
+                {service.description}
+              </p>
+
+              <a
+                href={`https://wa.me/5562998062169?text=Olá!%20Gostaria%20de%20informações%20sobre%20${encodeURIComponent(service.title)}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#1E3FD8] hover:text-[#3d5ce8] transition-colors"
+              >
+                Solicitar orçamento
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
           ))}
         </div>
