@@ -4,47 +4,47 @@ import { FileSearch, Ruler, FileText, HardHat, ClipboardList, Building2 } from "
 
 const services = [
   {
-    icon: FileSearch,
     title: "Perícias e Vistorias Técnicas",
     description:
       "Laudos técnicos detalhados para avaliar a segurança e conformidade do seu imóvel. Relatórios assinados por Engenheiro Civil com registro CREA.",
+    icon: FileSearch,
   },
   {
-    icon: Ruler,
     title: "Projetos de Engenharia",
     description:
       "Projetos Estruturais, Elétricos e Hidrossanitários completos para residências e comércios. Do croqui ao projeto executivo aprovado.",
+    icon: Ruler,
   },
   {
-    icon: FileText,
     title: "Alvará de Construção",
     description:
       "Aprovação de projetos e obtenção de Alvará de Construção junto à Prefeitura. Habite-se, Carta de Ocupação e Alvará de Funcionamento para empresas.",
+    icon: FileText,
   },
   {
-    icon: Building2,
     title: "Alvarás junto às Prefeituras",
     description:
       "Assessoria completa para aprovações junto à Prefeitura de Goiânia e Aparecida de Goiânia. Desmembramento, retificação de áreas e averbação em cartório.",
+    icon: Building2,
   },
   {
-    icon: ClipboardList,
     title: "Regularização de Imóveis",
     description:
       "Regularização de obras construídas sem alvará, ampliações e reformas não documentadas. INSS de obras e conformidade com a legislação vigente.",
+    icon: ClipboardList,
   },
   {
-    icon: HardHat,
     title: "Acompanhamento de Obras",
     description:
       "Gestão e execução de obras residenciais e comerciais do início ao fim. ART (Anotação de Responsabilidade Técnica) e controle de qualidade em cada etapa.",
+    icon: HardHat,
   },
 ]
 
 export function Services() {
   return (
     <section id="servicos" className="py-24 bg-[#080808] relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(30,63,216,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(30,63,216,0.06)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -62,20 +62,44 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative p-8 rounded-2xl bg-[#0a0a0a]/50 border border-[#1a1a1a] hover:border-[#1E3FD8]/50 transition-all duration-500 backdrop-blur-sm"
+              className="group relative p-8 rounded-2xl border transition-all duration-500"
+              style={{
+                backgroundColor: "#0d0d0d",
+                borderColor: "#1a1a1a",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(30,63,216,0.5)"
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLDivElement).style.borderColor = "#1a1a1a"
+              }}
             >
-              <div className="absolute inset-0 rounded-2xl bg-[#1E3FD8]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ backgroundColor: "rgba(30,63,216,0.04)" }} />
 
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-[#1E3FD8]/30 group-hover:shadow-[0_0_20px_rgba(30,63,216,0.2)] transition-all duration-500">
-                  <service.icon className="w-6 h-6 text-[#1E3FD8]" />
+                {/* Ícone em caixa azul — estilo Nexus */}
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500"
+                  style={{
+                    backgroundColor: "rgba(30,63,216,0.15)",
+                    border: "1px solid rgba(30,63,216,0.4)",
+                  }}
+                >
+                  <service.icon className="w-6 h-6" style={{ color: "#1E3FD8" }} />
                 </div>
 
-                <h3 className="text-xl font-bold text-[#fafafa] mb-3 group-hover:text-[#1E3FD8] transition-colors">
+                <h3
+                  className="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#1E3FD8]"
+                  style={{ color: "#fafafa" }}
+                >
                   {service.title}
                 </h3>
 
-                <p className="text-sm leading-relaxed text-[#888888] group-hover:text-[#aaaaaa] transition-colors mb-6">
+                <p
+                  className="text-sm leading-relaxed mb-6 transition-colors duration-300 group-hover:text-[#aaaaaa]"
+                  style={{ color: "#888888" }}
+                >
                   {service.description}
                 </p>
 
@@ -83,7 +107,8 @@ export function Services() {
                   href={`https://wa.me/5562998062169?text=Olá!%20Gostaria%20de%20informações%20sobre%20${encodeURIComponent(service.title)}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#1E3FD8] hover:text-[#3d5ce8] transition-colors"
+                  className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+                  style={{ color: "#1E3FD8" }}
                 >
                   Solicitar orçamento
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
