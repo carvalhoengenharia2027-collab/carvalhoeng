@@ -64,19 +64,16 @@ function StatCard({ stat, animate }: { stat: typeof stats[0]; animate: boolean }
   const count = useCountUp(stat.value, 1200, animate)
   return (
     <div
-      className="group relative rounded-xl p-6 text-center transition-all duration-500"
-      style={{ backgroundColor: "#0d0d0d", border: "1px solid #1a1a1a" }}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(30,63,216,0.5)"
-      }}
-      onMouseLeave={e => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = "#1a1a1a"
+      className="rounded-xl p-6 text-center transition-all duration-300"
+      style={{
+        backgroundColor: "#0d0d0d",
+        border: "1px solid rgba(30,63,216,0.25)",
       }}
     >
-      <p className="text-3xl font-bold mb-1 tabular-nums" style={{ color: "#1E3FD8" }}>
+      <p className="text-3xl font-bold mb-1 tabular-nums text-[#1E3FD8]">
         {count}{stat.suffix}
       </p>
-      <p className="text-sm" style={{ color: "#888888" }}>{stat.label}</p>
+      <p className="text-sm text-[#888888]">{stat.label}</p>
     </div>
   )
 }
@@ -102,12 +99,12 @@ export function Empresa() {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-mono uppercase tracking-widest mb-3" style={{ color: "#1E3FD8" }}>Quem Somos</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight" style={{ color: "#fafafa" }}>
+          <p className="text-[#1E3FD8] text-sm font-mono uppercase tracking-widest mb-3">Quem Somos</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#fafafa] mb-4 leading-tight">
             Há mais de 10 anos{" "}
-            <span style={{ color: "#1E3FD8" }}>transformando projetos em realidade</span>
+            <span className="text-[#1E3FD8]">transformando projetos em realidade</span>
           </h2>
-          <p className="max-w-2xl mx-auto leading-relaxed" style={{ color: "#888888" }}>
+          <p className="text-[#888888] max-w-2xl mx-auto leading-relaxed">
             Engenharia focada em aprovações, regularizações e projetos residenciais e comerciais.
             Atendemos Goiânia, Aparecida de Goiânia e interior de Goiás com responsabilidade técnica registrada no CREA.
           </p>
@@ -120,51 +117,42 @@ export function Empresa() {
           ))}
         </div>
 
-        {/* Pilares — estilo exato Nexus */}
+        {/* Pilares — estilo Nexus: borda azul visível, título azul, ícone fundo escuro */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pillars.map((pillar) => (
             <div
               key={pillar.title}
-              className="group relative p-8 rounded-2xl transition-all duration-500"
-              style={{ backgroundColor: "#0d0d0d", border: "1px solid #1a1a1a" }}
+              className="group relative p-6 rounded-2xl transition-all duration-300"
+              style={{
+                backgroundColor: "#0d0d0d",
+                border: "1px solid rgba(30,63,216,0.25)",
+              }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(30,63,216,0.5)"
+                (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(30,63,216,0.7)"
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "#1a1a1a"
+                (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(30,63,216,0.25)"
               }}
             >
+              {/* Ícone estilo Nexus */}
               <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ backgroundColor: "rgba(30,63,216,0.04)" }}
-              />
-
-              <div className="relative z-10">
-                {/* Ícone em caixa azul — estilo Nexus */}
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500"
-                  style={{
-                    backgroundColor: "rgba(30,63,216,0.15)",
-                    border: "1px solid rgba(30,63,216,0.4)",
-                  }}
-                >
-                  <pillar.icon className="w-6 h-6" style={{ color: "#1E3FD8" }} />
-                </div>
-
-                <h3
-                  className="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#1E3FD8]"
-                  style={{ color: "#fafafa" }}
-                >
-                  {pillar.title}
-                </h3>
-
-                <p
-                  className="text-sm leading-relaxed transition-colors duration-300 group-hover:text-[#aaaaaa]"
-                  style={{ color: "#888888" }}
-                >
-                  {pillar.description}
-                </p>
+                className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
+                style={{
+                  backgroundColor: "#111111",
+                  border: "1px solid #222222",
+                }}
+              >
+                <pillar.icon className="w-5 h-5 text-[#1E3FD8]" />
               </div>
+
+              {/* Título azul */}
+              <h3 className="text-lg font-bold text-[#1E3FD8] mb-3">
+                {pillar.title}
+              </h3>
+
+              <p className="text-sm leading-relaxed text-[#888888]">
+                {pillar.description}
+              </p>
             </div>
           ))}
         </div>
@@ -175,11 +163,11 @@ export function Empresa() {
             className="inline-flex items-center gap-3 px-6 py-3 rounded-xl"
             style={{ border: "1px solid rgba(30,63,216,0.2)", backgroundColor: "rgba(30,63,216,0.05)" }}
           >
-            <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "#1E3FD8" }} />
-            <span className="text-sm" style={{ color: "#888888" }}>
-              Responsável Técnico: <strong style={{ color: "#fafafa" }}>Engº Civil Caio Maracaípe</strong>
+            <div className="w-2 h-2 rounded-full animate-pulse bg-[#1E3FD8]" />
+            <span className="text-sm text-[#888888]">
+              Responsável Técnico: <strong className="text-[#fafafa]">Engº Civil Caio Maracaípe</strong>
               {" — "}
-              <span className="font-mono text-xs" style={{ color: "#1E3FD8" }}>CREA 1017786453D-GO</span>
+              <span className="font-mono text-xs text-[#1E3FD8]">CREA 1017786453D-GO</span>
             </span>
           </div>
         </div>
