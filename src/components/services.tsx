@@ -43,8 +43,8 @@ const services = [
 
 export function Services() {
   return (
-    <section id="servicos" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(30,63,216,0.06)_0%,transparent_70%)] pointer-events-none" />
+    <section id="servicos" className="py-24 bg-[#080808] relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(30,63,216,0.05)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -58,28 +58,27 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative p-7 rounded-2xl bg-[#0d0d0d] border border-[#1a1a1a] hover:border-[#1E3FD8]/50 transition-all duration-500 flex flex-col gap-4"
+              className="group relative p-8 rounded-2xl bg-[#0a0a0a]/50 border border-[#1a1a1a] hover:border-[#1E3FD8]/50 transition-all duration-500 backdrop-blur-sm"
             >
-              <div className="absolute inset-0 rounded-2xl bg-[#1E3FD8]/4 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="relative z-10 w-12 h-12 rounded-xl bg-[#111111] border border-[#222222] flex items-center justify-center group-hover:scale-110 group-hover:border-[#1E3FD8]/40 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(30,63,216,0.2)]">
-                <service.icon className="w-6 h-6 text-[#1E3FD8]" />
-              </div>
+              <div className="absolute inset-0 rounded-2xl bg-[#1E3FD8]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
-                <h3 className="text-base font-bold text-[#fafafa] mb-2 group-hover:text-[#1E3FD8] transition-colors leading-snug">
+                <div className="w-12 h-12 rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-[#1E3FD8]/30 group-hover:shadow-[0_0_20px_rgba(30,63,216,0.2)] transition-all duration-500">
+                  <service.icon className="w-6 h-6 text-[#1E3FD8]" />
+                </div>
+
+                <h3 className="text-xl font-bold text-[#fafafa] mb-3 group-hover:text-[#1E3FD8] transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-[#888888]">
+
+                <p className="text-sm leading-relaxed text-[#888888] group-hover:text-[#aaaaaa] transition-colors mb-6">
                   {service.description}
                 </p>
-              </div>
 
-              <div className="relative z-10 mt-auto pt-2">
                 <a
                   href={`https://wa.me/5562998062169?text=Olá!%20Gostaria%20de%20informações%20sobre%20${encodeURIComponent(service.title)}.`}
                   target="_blank"
